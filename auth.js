@@ -1,0 +1,1 @@
+document.querySelector('.auth-form')?.addEventListener('submit', (event) => { event.preventDefault(); const form = event.currentTarget; form.querySelector('.auth-status').textContent = 'Thanks — your details have been received.'; form.querySelector('button[type="submit"]').innerHTML = 'Complete <span>✓</span>'; });

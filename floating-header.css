@@ -37,13 +37,12 @@
 .reference-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 15px 28px 13px;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow: visible;
+  padding: 18px 44px 16px;
   background: #fff;
   border-bottom: 1px solid var(--line);
-  scrollbar-width: thin;
-  scrollbar-color: #b7c8c9 transparent;
 }
 .reference-nav a {
   flex: 0 0 auto;
@@ -51,22 +50,104 @@
   text-decoration: none;
   border: 1px solid var(--line);
   background: #fff;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border-radius: 999px;
-  font: 700 10px var(--sans);
+  font: 800 12px/1.2 var(--sans);
+  letter-spacing: .02em;
   white-space: nowrap;
-  transition: background .2s ease, color .2s ease, border-color .2s ease;
+  box-shadow: 0 2px 5px rgba(17, 37, 45, .06);
+  transition: background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.reference-menu {
+  position: relative;
+  flex: 0 0 auto;
+  padding-bottom: 9px;
+  margin-bottom: -9px;
+}
+.reference-submenu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% - 9px);
+  left: 0;
+  display: grid;
+  min-width: 154px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(17, 37, 45, .16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+.reference-menu:hover > .reference-submenu,
+.reference-menu:focus-within > .reference-submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.reference-submenu a {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 11px;
+}
+.reference-submenu a:hover,
+.reference-submenu a:focus-visible { box-shadow: none; transform: none; }
+.reference-submenu-menu {
+  position: relative;
+  padding-right: 8px;
+  margin-right: -8px;
+}
+.reference-submenu-menu > a { display: block; }
+.reference-nested-submenu {
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: calc(100% - 8px);
+  display: grid;
+  min-width: 100px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(17, 37, 45, .16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+.reference-submenu-menu:hover > .reference-nested-submenu,
+.reference-submenu-menu:focus-within > .reference-nested-submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.reference-nested-submenu a {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 11px;
 }
 .reference-nav a:hover,
 .reference-nav a:focus-visible {
   color: var(--ink);
   background: var(--cyan);
   border-color: #7bdcd2;
+  box-shadow: 0 6px 14px rgba(20, 164, 153, .18);
   outline: none;
+  transform: translateY(-1px);
 }
 @media (max-width: 760px) {
-  .reference-nav { padding: 12px 16px; gap: 7px; }
-  .reference-nav a { padding: 7px 11px; }
+  .reference-nav { padding: 14px 20px; gap: 8px; }
+  .reference-nav a { padding: 9px 13px; font-size: 11px; }
   .left-sidebar {
     display: block;
     padding: 18px 16px 14px;
